@@ -293,7 +293,7 @@ def process_reservations(csv_paths, target_date_str, ignore_set, update_log_call
 class App(ctk.CTk):
     def __init__(self):
         super().__init__()
-        self.title("Verificador de Tarifas (Fix Leitura)")
+        self.title("Verificador de Tarifas")
         self.geometry("900x650")
         
         self.csv_paths = []
@@ -459,3 +459,4 @@ if __name__ == "__main__":
     app = App()
 
     app.mainloop()
+
