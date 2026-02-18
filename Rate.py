@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+
 
 import tkinter
 from tkinter import ttk
@@ -64,7 +64,7 @@ ai_reader = SmartEmailReader()
 
 def clean_money(val_str):
     if not isinstance(val_str, str): return 0.0
-    # Remove espaços e símbolos de moeda, mantendo numeros, pontos e virgulas
+   
     clean = re.sub(r'[^\d.,]', '', val_str)
     
     # Lógica para saber se ',' é decimal ou milhar
@@ -128,7 +128,7 @@ def find_rate_hybrid(email_text, target_date_str):
             if dt_start <= target_dt < dt_end:
                 return clean_money(rate_str), f"Tarifa do Período ({day_i}/{month_i}-{day_f}/{month_f})"
 
-    # --- ESTRATÉGIA 2: PADRÃO ACCOR GENÉRICO (Se não achou período específico) ---
+    # --- ESTRATÉGIA 2: PADRÃO se não achou período específico ---
     accor_simple = re.search(r":\s*R\$\s*([\d.,]+)\s*BRL\s*per night", email_text, re.IGNORECASE)
     if accor_simple and not matches: 
         return clean_money(accor_simple.group(1)), "Padrão Accor (Único)"
@@ -144,7 +144,7 @@ def find_rate_hybrid(email_text, target_date_str):
 
     return 0.0, "Não encontrado"
 
-# --- PROCESSAMENTO (WORKER) ---
+# --- PROCESSAMENTO ---
 def process_reservations(csv_paths, target_date_str, ignore_set, update_log_callback, update_progress_callback, on_complete_callback, stop_event):
     results_data = []
     verified_correct = []
@@ -160,7 +160,7 @@ def process_reservations(csv_paths, target_date_str, ignore_set, update_log_call
         service = Service(ChromeDriverManager().install())
         driver = webdriver.Chrome(service=service, options=options)
 
-        # Leitura Robusta dos CSVs
+        # Leitura dos CSVs
         all_dfs = []
         for path in csv_paths:
             try:
@@ -239,9 +239,9 @@ def process_reservations(csv_paths, target_date_str, ignore_set, update_log_call
                     results_data.append({'Quarto': room, 'Nome': name, 'Ref.': ext_ref, 'Tarifa CSV': rate_csv_str, 'Tarifa Email': 'N/A', 'Status': 'EMAIL NÃO ENCONTRADO'})
                     continue
 
-                # --- ATUALIZAÇÃO PARA LER CORPO (CORREÇÃO APLICADA) ---
+                # --- ATUALIZAÇÃO PARA LER CORPO ---
                 try:
-                    # TENTATIVA 1: Pelo ID específico que você forneceu
+                    # TENTATIVA 1: Pelo ID específico que forneceu
                     try:
                         email_body = WebDriverWait(driver, 5).until(
                             EC.presence_of_element_located((By.ID, 'Pular para mensagem-region'))
@@ -457,4 +457,5 @@ class App(ctk.CTk):
 
 if __name__ == "__main__":
     app = App()
+
     app.mainloop()
