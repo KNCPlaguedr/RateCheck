@@ -2,11 +2,11 @@
 Este projeto é uma ferramenta de automação desenvolvida para otimizar o processo de auditoria e conciliação de tarifas hoteleiras. A aplicação cruza dados de relatórios internos (CSV) com confirmações de reserva acessadas via navegador web, garantindo que o valor cobrado corresponde ao valor confirmado.
 
 
-# 🏨 Hotel Rate Validator (Verificador de Tarifas)
+# Hotel Rate Validator (Verificador de Tarifas)
 
 Este projeto é uma ferramenta de automação desenvolvida para otimizar o processo de auditoria e conciliação de tarifas hoteleiras. A aplicação cruza dados de relatórios internos (CSV) com confirmações de reserva acessadas via navegador web, garantindo que o valor cobrado corresponde ao valor confirmado.
 
-## 🚀 Funcionalidades Principais
+##  Funcionalidades Principais
 
 * **Automação Web (RPA):** Utiliza **Selenium** para buscar automaticamente referências de reserva em um portal web/e-mail.
 * **Extração Híbrida Inteligente:**
@@ -16,7 +16,7 @@ Este projeto é uma ferramenta de automação desenvolvida para otimizar o proce
 * **Processamento de Dados:** Leitura e tratamento de arquivos CSV com **Pandas**, incluindo lógica para ignorar quartos "Share" (múltiplos hóspedes) ou lista de exclusão manual.
 * **Relatórios:** Gera um resumo visual (Treeview) com status coloridos (Correto, Erro de Tarifa, Sem Referência).
 
-## 🛠️ Tecnologias Utilizadas
+##  Tecnologias Utilizadas
 
 * **Python 3.12+**
 * **GUI:** `customtkinter`, `tkinter`, `ttkbootstrap`
@@ -24,7 +24,7 @@ Este projeto é uma ferramenta de automação desenvolvida para otimizar o proce
 * **Dados:** `pandas`, `re` (Regex)
 * **AI/ML:** `transformers`, `torch` (DistilBERT model)
 
-## ⚙️ Como Funciona
+##  Como Funciona
 
 Navegue até Bookings > Reservations > Manage Reservation.
 
@@ -44,7 +44,7 @@ Vá em View Options > Export > CSV.
 
 Selecione Loaded Rows e clique em Export.
 
-⚠️ Atenção: O sistema carrega apenas 100 reservas por vez. É necessário rolar a página para carregar mais reservas e repetir a exportação para garantir que todos os dados sejam capturados.
+ Atenção: O sistema carrega apenas 100 reservas por vez. É necessário rolar a página para carregar mais reservas e repetir a exportação para garantir que todos os dados sejam capturados.
 
 
 1.  O usuário carrega os arquivos CSV contendo as reservas do dia.
